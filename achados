@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  MEUS ACHADINHOS — página de link na bio
+  ============================================================
+  COMO EDITAR (3 coisas para trocar antes de publicar):
+
+  1) SUA FOTO
+     Procure "SUBSTITUA A FOTO" abaixo e troque a <div class="foto-placeholder">
+     por: <img src="sua-foto.jpg" alt="Foto de Pedro">
+
+  2) OS 3 LINKS DE AFILIADO
+     Procure "COLOQUE_SEU_LINK_..." e troque pelo link real de cada loja.
+     Se for outra loja no lugar da Shein, é só trocar o nome e o texto.
+
+  3) HOSPEDAGEM
+     Depois de editado, suba este arquivo em algo como GitHub Pages,
+     Netlify ou Vercel (grátis) e cole o link gerado na bio das suas redes.
+  ============================================================
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus achadinhos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Caveat:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page-bg: #E4DCC7;
+    --paper: #F7F2E6;
+    --paper-dark: #EDE4CF;
+    --ink: #2B2620;
+    --ink-soft: #79705F;
+    --moss: #5C6E4E;
+    --marker: #C9A227;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background: var(--page-bg);
+    background-image: radial-gradient(circle at 1px 1px, rgba(43,38,32,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding: 40px 16px 60px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+  }
+
+  .card{
+    position:relative;
+    width:100%;
+    max-width: 420px;
+    background: var(--paper);
+    padding: 34px 26px 24px;
+    box-shadow: 0 18px 40px rgba(43,38,32,0.16);
+  }
+
+  /* borda serrilhada tipo selo/ficha, no topo e embaixo */
+  .card::before, .card::after{
+    content:'';
+    position:absolute;
+    left:0; right:0;
+    height:10px;
+    background-image:
+      linear-gradient(135deg, var(--page-bg) 50%, transparent 50%),
+      linear-gradient(45deg, var(--page-bg) 50%, transparent 50%);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 0;
+  }
+  .card::before{ top:-9px; }
+  .card::after{ bottom:-9px; transform: rotate(180deg); }
+
+  /* ---- fita + foto ---- */
+  .foto-wrap{
+    width: 140px;
+    margin: 6px auto 18px;
+    position: relative;
+  }
+  .fita{
+    position:absolute;
+    top:-12px; left:50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 72px; height: 26px;
+    background: rgba(201,162,39,0.35);
+    border: 1px solid rgba(201,162,39,0.5);
+    z-index: 2;
+  }
+  .polaroid{
+    background:#fff;
+    padding: 10px 10px 22px;
+    transform: rotate(-3deg);
+    box-shadow: 0 10px 20px rgba(43,38,32,0.18);
+  }
+  /* SUBSTITUA A FOTO: troque o bloco .foto-placeholder por
+     <img src="sua-foto.jpg" alt="Foto de Pedro" style="width:100%;display:block;aspect-ratio:1/1;object-fit:cover;"> */
+  .foto-placeholder{
+    width:100%;
+    aspect-ratio: 1/1;
+    background:
+      repeating-linear-gradient(45deg, var(--paper-dark), var(--paper-dark) 10px, #E1D6BB 10px, #E1D6BB 20px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    padding: 8px;
+  }
+
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-style: italic;
+    font-size: clamp(32px, 8vw, 40px);
+    text-align:center;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitulo{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size: 22px;
+    text-align:center;
+    color: var(--moss);
+    transform: rotate(-1.5deg);
+    margin: 0 0 18px;
+  }
+
+  .divisor{
+    text-align:center;
+    color: var(--ink-soft);
+    letter-spacing: 6px;
+    font-size: 12px;
+    margin: 18px 0;
+    user-select:none;
+  }
+
+  .links{
+    list-style:none;
+    padding:0;
+    margin: 0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .tag{
+    position: relative;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    background: var(--paper-dark);
+    padding: 16px 18px 16px 40px;
+    clip-path: polygon(24px 0, 100% 0, 100% 100%, 24px 100%, 0 50%);
+    text-decoration:none;
+    color: var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .tag::before{
+    content:'';
+    position:absolute;
+    left: 12px; top:50%;
+    transform: translateY(-50%);
+    width:9px; height:9px;
+    border-radius:50%;
+    background: var(--paper);
+    border: 1.5px solid var(--moss);
+  }
+  .tag:hover{ transform: translateX(3px); box-shadow: -3px 3px 0 rgba(92,110,78,0.25); }
+  .tag:active{ transform: translateX(1px) scale(0.99); }
+  .tag:focus-visible{ outline: 2px solid var(--moss); outline-offset: 3px; }
+
+  .selo{
+    flex: 0 0 auto;
+    width: 30px; height:30px;
+    border-radius:50%;
+    background: var(--paper);
+    border:1px solid rgba(43,38,32,0.15);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:13px;
+    color: var(--moss);
+  }
+
+  .tag-texto{ flex:1; min-width:0; }
+  .tag-loja{
+    display:block;
+    font-weight:600;
+    font-size:16px;
+    margin-bottom:2px;
+  }
+  .tag-gancho{
+    display:block;
+    font-size:12.5px;
+    color: var(--ink-soft);
+  }
+
+  .tag-seta{
+    flex:0 0 auto;
+    font-size:13px;
+    font-weight:500;
+    color: var(--moss);
+    white-space:nowrap;
+  }
+
+  footer{
+    margin-top: 26px;
+    text-align:center;
+  }
+  .assinatura{
+    font-family:'Caveat', cursive;
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .aviso{
+    font-size: 11px;
+    line-height:1.5;
+    color: var(--ink-soft);
+    opacity:.85;
+    margin:0;
+    padding: 0 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tag{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <main class="card">
+
+    <div class="foto-wrap">
+      <div class="fita"></div>
+      <div class="polaroid">
+        <!-- SUBSTITUA A FOTO aqui -->
+        <div class="foto-placeholder">sua foto aqui 📸</div>
+      </div>
+    </div>
+
+    <h1>Meus achadinhos</h1>
+    <p class="subtitulo">as coisinhas boas que eu encontro por aí 🧡</p>
+
+    <p class="divisor">· · · · · · · · · · · · · · ·</p>
+
+    <ul class="links">
+      <li>
+        <a class="tag" href="COLOQUE_SEU_LINK_SHOPEE_AQUI" target="_blank" rel="sponsored noopener noreferrer">
+          <span class="selo">S</span>
+          <span class="tag-texto">
+            <span class="tag-loja">Shopee</span>
+            <span class="tag-gancho">as ofertas que eu mais compro</span>
+          </span>
+          <span class="tag-seta">ver ofertas →</span>
+        </a>
+      </li>
+      <li>
+        <a class="tag" href="COLOQUE_SEU_LINK_MERCADO_LIVRE_AQUI" target="_blank" rel="sponsored noopener noreferrer">
+          <span class="selo">M</span>
+          <span class="tag-texto">
+            <span class="tag-loja">Mercado Livre</span>
+            <span class="tag-gancho">achados com garantia e entrega rápida</span>
+          </span>
+          <span class="tag-seta">conferir →</span>
+        </a>
+      </li>
+      <li>
+        <a class="tag" href="COLOQUE_SEU_LINK_SHEIN_AQUI" target="_blank" rel="sponsored noopener noreferrer">
+          <span class="selo">S</span>
+          <span class="tag-texto">
+            <span class="tag-loja">Shein</span>
+            <span class="tag-gancho">moda e acessórios que valem a pena</span>
+          </span>
+          <span class="tag-seta">ver peças →</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="divisor">· · · · · · · · · · · · · · ·</p>
+
+    <footer>
+      <p class="assinatura">com carinho, Pedro</p>
+      <p class="aviso">alguns links acima são de afiliado — posso ganhar uma pequena comissão pela sua compra, sem nenhum custo extra pra você.</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
